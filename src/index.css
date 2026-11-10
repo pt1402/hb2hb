@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --color-plum-950: #12030d;
+  --color-plum-900: #1b0715;
+  --color-plum-850: #240a1d;
+  --color-plum-800: #2f0e26;
+  --color-plum-700: #471439;
+  --color-plum-600: #621d4f;
+
+  --color-burgundy-950: #18040d;
+  --color-burgundy-900: #270617;
+  --color-burgundy-800: #3b0923;
+  --color-burgundy-700: #530d31;
+
+  --color-blush-50: #fff1f2;
+  --color-blush-100: #ffe4e6;
+  --color-blush-200: #fecdd3;
+  --color-blush-300: #fda4af;
+  --color-blush-400: #fb7185;
+  --color-blush-500: #f43f5e;
+}
+
+@layer base {
+  * {
+    border-color: rgba(251, 113, 133, 0.15);
+  }
+
+  body {
+    background-color: #12030d;
+    color: #fce7f3;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(30, 9, 23, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 113, 133, 0.18);
+}
+
+.glass-panel-subtle {
+  background: rgba(26, 7, 20, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 113, 133, 0.12);
+}
+
+.glass-panel-blush {
+  background: linear-gradient(135deg, rgba(82, 17, 49, 0.45) 0%, rgba(46, 12, 33, 0.65) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(253, 164, 175, 0.25);
+}
+
+.glass-button {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.85) 0%, rgba(225, 29, 72, 0.95) 100%);
+  box-shadow: 0 4px 20px -2px rgba(244, 63, 94, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -2px rgba(244, 63, 94, 0.5);
+}
+
+/* Atmospheric Ambient Glows */
+.radial-glow-plum {
+  background: radial-gradient(circle at 50% 50%, rgba(157, 72, 111, 0.18) 0%, rgba(18, 3, 13, 0) 70%);
+}
+
+.radial-glow-rose {
+  background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.15) 0%, rgba(18, 3, 13, 0) 70%);
+}
+
+/* Custom Scrollbar for smooth feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #12030d;
+}
+::-webkit-scrollbar-thumb {
+  background: #471439;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #621d4f;
+}
