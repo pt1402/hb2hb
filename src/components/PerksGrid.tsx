@@ -33,7 +33,7 @@ export const PerksGrid: React.FC<PerksGridProps> = ({ onOpenBixbyLore }) => {
         </h2>
 
         <p className="text-sm sm:text-base text-ivory-100/80 font-light leading-relaxed max-w-lg mx-auto">
-          A premium three-tier chocolate assortment of what stays, what levels up, and what is waiting to be explored.
+          A three-tier assortment of what stays, what levels up, and what is waiting to be explored.
         </p>
       </div>
 
@@ -208,7 +208,7 @@ export const PerksGrid: React.FC<PerksGridProps> = ({ onOpenBixbyLore }) => {
                       title="View Bixby reminder receipt"
                     >
                       <Bell className="w-2.5 h-2.5 text-gold-400 shrink-0" />
-                      <span className="truncate">15-day receipt verified ✨</span>
+                      <span className="truncate">Click to verify 15-day receipt✨</span>
                     </button>
                   )}
                 </h3>
@@ -224,7 +224,7 @@ export const PerksGrid: React.FC<PerksGridProps> = ({ onOpenBixbyLore }) => {
         {/* Warm closing note */}
         <div className="mt-8 pt-6 border-t border-gold-400/20 text-center flex flex-col sm:flex-row items-center justify-center gap-2 text-xs sm:text-sm text-gold-300/80">
           <HeartHandshake className="w-4 h-4 text-gold-400 shrink-0" />
-          <span>Warmth, trust, mutual respect, and absolute freedom — zero awkwardness.</span>
+          <span>Not legal terms. Just promises of warmth, trust, respect, freedom, comfort and consent.</span>
         </div>
       </div>
     </section>

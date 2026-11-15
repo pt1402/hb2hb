@@ -205,7 +205,7 @@ export const ProposalSection: React.FC = () => {
 
         {/* Privacy & Safety Note */}
         <div className="mt-8 text-center text-xs text-gold-400/60 font-mono">
-          🔒 Your answer is 100% private in your browser. Nothing is sent to any server.
+          🔒 I can't see what you select. You'll have to text me.
         </div>
       </div>
     </section>
