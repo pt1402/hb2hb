@@ -1,99 +1,210 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-script: "Great Vibes", cursive;
 
-  --color-plum-950: #12030d;
-  --color-plum-900: #1b0715;
-  --color-plum-850: #240a1d;
-  --color-plum-800: #2f0e26;
-  --color-plum-700: #471439;
-  --color-plum-600: #621d4f;
+  --color-cadbury-950: #120324;
+  --color-cadbury-900: #1b0638;
+  --color-cadbury-850: #200842;
+  --color-cadbury-800: #240b49;
+  --color-cadbury-700: #351261;
+  --color-cadbury-600: #3b146b;
+  --color-cadbury-500: #4a1980;
+  --color-cadbury-400: #6a2ba8;
+  --color-cadbury-300: #9356cc;
+  --color-cadbury-200: #c4aee0;
+  --color-cadbury-100: #e8dff5;
 
-  --color-burgundy-950: #18040d;
-  --color-burgundy-900: #270617;
-  --color-burgundy-800: #3b0923;
-  --color-burgundy-700: #530d31;
+  --color-gold-200: #fbf0d4;
+  --color-gold-300: #f5de9c;
+  --color-gold-400: #e8c170;
+  --color-gold-500: #d6ad55;
+  --color-gold-600: #b88b38;
+  --color-gold-700: #946c24;
 
-  --color-blush-50: #fff1f2;
-  --color-blush-100: #ffe4e6;
-  --color-blush-200: #fecdd3;
-  --color-blush-300: #fda4af;
-  --color-blush-400: #fb7185;
-  --color-blush-500: #f43f5e;
+  --color-ivory-50: #fffdf9;
+  --color-ivory-100: #fff5e5;
+  --color-ivory-200: #faebd7;
+
+  --color-chocolate-950: #190a03;
+  --color-chocolate-900: #261105;
+  --color-chocolate-800: #3e1e0e;
+  --color-chocolate-700: #572d16;
 }
 
 @layer base {
-  * {
-    border-color: rgba(251, 113, 133, 0.15);
+  *, ::before, ::after {
+    border-color: rgba(214, 173, 85, 0.2);
+    box-sizing: border-box;
   }
 
-  body {
-    background-color: #12030d;
-    color: #fce7f3;
-    font-family: var(--font-sans);
+  html {
+    max-width: 100%;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: var(--font-serif);
+  body {
+    background-color: #140428;
+    color: #fff5e5;
+    font-family: var(--font-sans);
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display, .font-serif {
+    font-family: var(--font-display);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
   }
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(30, 9, 23, 0.65);
+/* Cadbury & Gold Luxury Styling */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fffdf9 0%, #f5de9c 35%, #d6ad55 70%, #e8c170 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-border {
+  border: 1px solid;
+  border-image: linear-gradient(135deg, #f5de9c 0%, #d6ad55 45%, #946c24 80%, #e8c170 100%) 1;
+}
+
+.cadbury-panel {
+  background: linear-gradient(145deg, rgba(40, 12, 75, 0.75) 0%, rgba(27, 6, 56, 0.9) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(251, 113, 133, 0.18);
+  border: 1px solid rgba(214, 173, 85, 0.25);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(245, 222, 156, 0.15);
 }
 
-.glass-panel-subtle {
-  background: rgba(26, 7, 20, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(251, 113, 133, 0.12);
+.cadbury-panel-interactive {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cadbury-panel-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(214, 173, 85, 0.55);
+  box-shadow: 0 15px 40px -5px rgba(36, 11, 73, 0.6), 0 0 25px rgba(214, 173, 85, 0.15), inset 0 1px 0 rgba(245, 222, 156, 0.3);
 }
 
-.glass-panel-blush {
-  background: linear-gradient(135deg, rgba(82, 17, 49, 0.45) 0%, rgba(46, 12, 33, 0.65) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(253, 164, 175, 0.25);
+/* Chocolate Mold / Square Bevel Effect */
+.chocolate-square {
+  background: linear-gradient(135deg, #2a0c4f 0%, #1f073d 50%, #16042d 100%);
+  border-top: 1px solid rgba(245, 222, 156, 0.35);
+  border-left: 1px solid rgba(245, 222, 156, 0.25);
+  border-right: 1px solid rgba(18, 3, 36, 0.8);
+  border-bottom: 2px solid rgba(14, 2, 28, 0.95);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.08);
 }
 
-.glass-button {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.85) 0%, rgba(225, 29, 72, 0.95) 100%);
-  box-shadow: 0 4px 20px -2px rgba(244, 63, 94, 0.35);
+.chocolate-square:hover {
+  border-top-color: rgba(245, 222, 156, 0.6);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(214, 173, 85, 0.2), inset 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Tier Specific Textures: Classic, Crackle, Silk */
+.tier-classic-card {
+  background: linear-gradient(140deg, #320f5c 0%, #220844 55%, #16042d 100%);
+  border-top: 1px solid rgba(245, 222, 156, 0.4);
+  border-left: 1px solid rgba(245, 222, 156, 0.25);
+  border-right: 1px solid rgba(18, 3, 36, 0.85);
+  border-bottom: 2px solid rgba(14, 2, 28, 0.95);
+  box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.65), inset 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+.tier-classic-card:hover {
+  border-top-color: rgba(245, 222, 156, 0.7);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.75), 0 0 22px rgba(214, 173, 85, 0.25), inset 0 2px 8px rgba(255, 255, 255, 0.18);
+}
+
+.tier-crackle-card {
+  background: 
+    linear-gradient(145deg, rgba(46, 13, 84, 0.92) 0%, rgba(27, 7, 54, 0.96) 100%),
+    repeating-linear-gradient(60deg, transparent, transparent 18px, rgba(214, 173, 85, 0.05) 18px, rgba(214, 173, 85, 0.05) 19px),
+    repeating-linear-gradient(-35deg, transparent, transparent 24px, rgba(245, 222, 156, 0.04) 24px, rgba(245, 222, 156, 0.04) 25px);
+  border-top: 1px solid rgba(245, 222, 156, 0.45);
+  border-left: 1px solid rgba(245, 222, 156, 0.3);
+  border-right: 1px solid rgba(18, 3, 36, 0.85);
+  border-bottom: 2px solid rgba(14, 2, 28, 0.95);
+  box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.65), inset 0 2px 4px rgba(255, 255, 255, 0.08);
+}
+.tier-crackle-card:hover {
+  border-top-color: rgba(245, 222, 156, 0.75);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.75), 0 0 22px rgba(232, 193, 112, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+.tier-silk-card {
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(214, 173, 85, 0.09) 0%, transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(147, 86, 204, 0.15) 0%, transparent 50%),
+    linear-gradient(145deg, #421473 0%, #2a0b52 50%, #170430 100%);
+  border-top: 1px solid rgba(245, 222, 156, 0.5);
+  border-left: 1px solid rgba(245, 222, 156, 0.35);
+  border-right: 1px solid rgba(18, 3, 36, 0.85);
+  border-bottom: 2px solid rgba(14, 2, 28, 0.95);
+  box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.7), inset 0 2px 6px rgba(255, 255, 255, 0.14), inset 0 0 15px rgba(106, 43, 168, 0.3);
+}
+.tier-silk-card:hover {
+  border-top-color: rgba(245, 222, 156, 0.8);
+  box-shadow: 0 14px 35px -4px rgba(0, 0, 0, 0.8), 0 0 25px rgba(214, 173, 85, 0.32), inset 0 2px 8px rgba(255, 255, 255, 0.22);
+}
+
+/* Premium Gold Button */
+.gold-button {
+  background: linear-gradient(135deg, #f5de9c 0%, #d6ad55 45%, #b88b38 85%, #d6ad55 100%);
+  color: #1b0638;
+  font-weight: 600;
+  box-shadow: 0 4px 20px -2px rgba(214, 173, 85, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-button:hover {
+.gold-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -2px rgba(244, 63, 94, 0.5);
+  background: linear-gradient(135deg, #fffdf9 0%, #e8c170 45%, #d6ad55 85%, #f5de9c 100%);
+  box-shadow: 0 8px 28px -2px rgba(214, 173, 85, 0.65), 0 0 20px rgba(214, 173, 85, 0.35);
 }
 
-/* Atmospheric Ambient Glows */
-.radial-glow-plum {
-  background: radial-gradient(circle at 50% 50%, rgba(157, 72, 111, 0.18) 0%, rgba(18, 3, 13, 0) 70%);
+/* Purple Royalty Button */
+.purple-button {
+  background: linear-gradient(135deg, #4a1980 0%, #351261 50%, #240b49 100%);
+  border: 1px solid rgba(214, 173, 85, 0.45);
+  color: #fff5e5;
+  box-shadow: 0 4px 20px -2px rgba(36, 11, 73, 0.6), inset 0 1px 0 rgba(245, 222, 156, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.radial-glow-rose {
-  background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.15) 0%, rgba(18, 3, 13, 0) 70%);
+.purple-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(245, 222, 156, 0.8);
+  box-shadow: 0 8px 30px -2px rgba(59, 20, 107, 0.7), 0 0 20px rgba(214, 173, 85, 0.25);
 }
 
-/* Custom Scrollbar for smooth feel */
+/* Atmospheric Glows */
+.radial-glow-purple {
+  background: radial-gradient(circle at 50% 50%, rgba(74, 25, 128, 0.25) 0%, rgba(20, 4, 40, 0) 70%);
+}
+
+.radial-glow-gold {
+  background: radial-gradient(circle at 50% 50%, rgba(214, 173, 85, 0.18) 0%, rgba(20, 4, 40, 0) 70%);
+}
+
+/* Custom Scrollbar in Cadbury Purple & Gold */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #12030d;
+  background: #140428;
 }
 ::-webkit-scrollbar-thumb {
-  background: #471439;
+  background: #351261;
+  border: 1px solid rgba(214, 173, 85, 0.2);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #621d4f;
+  background: #4a1980;
+  border-color: rgba(214, 173, 85, 0.4);
 }

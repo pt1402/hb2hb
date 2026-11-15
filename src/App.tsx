@@ -1,96 +1,64 @@
-import { useState } from 'react'
-import { FloatingParticles } from './components/FloatingParticles'
-import { HeroSection } from './components/HeroSection'
-import { VideoSection } from './components/VideoSection'
+import { useState, useEffect } from 'react'
+import { LandingWrapper } from './components/LandingWrapper'
+import { HeroVideoSection } from './components/HeroVideoSection'
 import { PerksGrid } from './components/PerksGrid'
-import { BestKeptSecret } from './components/BestKeptSecret'
 import { DisadvantagesSection } from './components/DisadvantagesSection'
 import { ProposalSection } from './components/ProposalSection'
 import { Footer } from './components/Footer'
-import { BixbyModal } from './components/BixbyModal'
 import { AudioPlayer } from './components/AudioPlayer'
-import { Sparkles, Heart } from 'lucide-react'
+import { FloatingParticles } from './components/FloatingParticles'
+import { BixbyModal } from './components/BixbyModal'
 
 export function App() {
+  const [isRevealed, setIsRevealed] = useState(false)
   const [bixbyModalOpen, setBixbyModalOpen] = useState(false)
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
+  // Prevent background scrolling while on the landing screen
+  useEffect(() => {
+    if (!isRevealed) {
+      document.body.style.overflow = 'hidden'
+      window.scrollTo(0, 0)
+    } else {
+      document.body.style.overflow = ''
     }
+  }, [isRevealed])
+
+  const handleReveal = () => {
+    setIsRevealed(true)
   }
 
   return (
-    <div className="relative min-h-screen bg-[#12030d] text-[#fce7f3] selection:bg-rose-500 selection:text-white">
-      {/* Gentle Floating Hearts & Ambient Glows */}
+    <div className="relative min-h-screen w-full max-w-full bg-[#140428] text-[#FFF5E5] selection:bg-[#D6AD55] selection:text-[#1B0638]">
+      {/* 1. INITIAL CLICK-TO-REVEAL LANDING PAGE (Occupies full viewport, locks website until clicked) */}
+      {!isRevealed && (
+        <LandingWrapper onReveal={handleReveal} />
+      )}
+
+      {/* Floating Golden Sparks and Particles (Active after reveal) */}
       <FloatingParticles />
 
-      {/* Top Floating Controls: Ambient Soundtrack */}
-      <AudioPlayer />
+      {/* Persistent Audio Player (Plays Dairy Milk "Kiss Me" from /audio.mp3 on loop) */}
+      <AudioPlayer shouldPlay={isRevealed} />
 
-      {/* Subtle Top Navigation / Status Header */}
-      <header className="sticky top-0 z-30 w-full backdrop-blur-md bg-[#12030d]/70 border-b border-rose-500/10 px-4 py-3 flex items-center justify-between transition-all">
-        <div className="flex items-center gap-2">
-          <Heart className="w-4 h-4 text-rose-500 fill-current animate-pulse" />
-          <span className="font-serif font-bold text-sm tracking-wide text-white">
-            The Proposal
-          </span>
-          <span className="text-[10px] font-mono text-rose-300/70 bg-rose-950/60 px-2 py-0.5 rounded-full border border-rose-500/20">
-            v1.0 • Nov 21
-          </span>
-        </div>
+      {/* MAIN PROPOSAL WEBSITE (Revealed after landing CTA click, NO HEADER / NO NAV BAR) */}
+      {isRevealed && (
+        <main className="relative z-10 w-full max-w-full animate-fade-in transition-opacity duration-700">
+          {/* Section 1: Cinematic Vertical Video Hero Experience */}
+          <HeroVideoSection isActive={isRevealed} />
 
-        {/* Quick Nav Anchors */}
-        <nav className="flex items-center gap-1 sm:gap-2 text-xs text-rose-200/80">
-          <button
-            onClick={() => scrollToSection('preview')}
-            className="px-2.5 py-1 rounded-lg hover:bg-rose-950/50 hover:text-white transition-colors cursor-pointer"
-          >
-            Preview
-          </button>
-          <button
-            onClick={() => scrollToSection('perks')}
-            className="px-2.5 py-1 rounded-lg hover:bg-rose-950/50 hover:text-white transition-colors cursor-pointer"
-          >
-            Perks
-          </button>
-          <button
-            onClick={() => scrollToSection('proposal')}
-            className="px-3 py-1 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 text-white font-medium hover:brightness-110 transition-all shadow-sm cursor-pointer flex items-center gap-1"
-          >
-            <span>Decide</span>
-            <Sparkles className="w-3 h-3" />
-          </button>
-        </nav>
-      </header>
+          {/* Section 2: The Perks Package ❤️ (Includes The Best-Kept Secret 🤫 inside) */}
+          <PerksGrid onOpenBixbyLore={() => setBixbyModalOpen(true)} />
 
-      {/* Main Content Area */}
-      <main className="relative z-10">
-        {/* Section 1: The Landing Page */}
-        <HeroSection
-          onExploreClick={() => scrollToSection('preview')}
-          onOpenBixbyLore={() => setBixbyModalOpen(true)}
-        />
+          {/* Section 3: Potential Disadvantages */}
+          <DisadvantagesSection />
 
-        {/* Section 2: A Little Preview of the Perks */}
-        <VideoSection />
+          {/* Section 4: The Actual Proposal 🥹 */}
+          <ProposalSection />
 
-        {/* Section 3: The Perks Package ❤️ */}
-        <PerksGrid />
-
-        {/* Section 4: The Best-Kept Secret 🤫 */}
-        <BestKeptSecret />
-
-        {/* Section 5: Potential Disadvantages */}
-        <DisadvantagesSection />
-
-        {/* Section 6: The Actual Proposal */}
-        <ProposalSection />
-      </main>
-
-      {/* Section 7: Footer */}
-      <Footer />
+          {/* Section 5: Footer */}
+          <Footer />
+        </main>
+      )}
 
       {/* Easter Egg / Bixby Lore Modal */}
       <BixbyModal

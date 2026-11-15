@@ -1,134 +1,132 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Music, VolumeX, Sparkles } from 'lucide-react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Volume2, VolumeX } from 'lucide-react'
 
-export const AudioPlayer: React.FC = () => {
+interface AudioPlayerProps {
+  shouldPlay: boolean
+}
+
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ shouldPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const audioCtxRef = useRef<AudioContext | null>(null)
-  const timerRef = useRef<number | null>(null)
+  const [playbackError, setPlaybackError] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  // Soft romantic lofi chord progression using Web Audio API
-  // Chords: Dbm7 -> Abm7 -> Amaj7 -> B
-  const chords = [
-    [277.18, 329.63, 415.30, 493.88], // Dbm7
-    [207.65, 246.94, 311.13, 369.99], // Abm7
-    [220.00, 277.18, 329.63, 415.30], // Amaj7
-    [246.94, 311.13, 369.99, 440.00]  // B(add9)
-  ]
-
-  const playNote = (ctx: AudioContext, freq: number, startTime: number, duration: number) => {
-    try {
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      const filter = ctx.createBiquadFilter()
-
-      // Warm sine/triangle blend
-      osc.type = 'triangle'
-      osc.frequency.setValueAtTime(freq, startTime)
-
-      // Warm lowpass filter for dreamy romantic acoustic vibe
-      filter.type = 'lowpass'
-      filter.frequency.setValueAtTime(550, startTime)
-      filter.Q.setValueAtTime(1.5, startTime)
-
-      // Soft envelope
-      gain.gain.setValueAtTime(0, startTime)
-      gain.gain.linearRampToValueAtTime(0.025, startTime + 0.8) // very gentle volume
-      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration)
-
-      osc.connect(filter)
-      filter.connect(gain)
-      gain.connect(ctx.destination)
-
-      osc.start(startTime)
-      osc.stop(startTime + duration)
-    } catch (e) {
-      console.log('Audio note error:', e)
-    }
-  }
-
-  const startAmbientLoop = () => {
-    if (!audioCtxRef.current) {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
-      audioCtxRef.current = new AudioCtx()
-    }
-
-    const ctx = audioCtxRef.current
-    if (ctx.state === 'suspended') {
-      ctx.resume()
-    }
-
-    let chordIndex = 0
-
-    const scheduleNext = () => {
-      if (!ctx || ctx.state === 'closed') return
-
-      const now = ctx.currentTime
-      const chord = chords[chordIndex % chords.length]
-
-      // Stagger notes like a gentle harp strum
-      chord.forEach((freq, idx) => {
-        playNote(ctx, freq, now + (idx * 0.12), 4.2)
-      })
-
-      chordIndex++
-      timerRef.current = window.setTimeout(scheduleNext, 3800)
-    }
-
-    scheduleNext()
-  }
-
-  const stopAmbient = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current)
-      timerRef.current = null
-    }
-    if (audioCtxRef.current) {
-      audioCtxRef.current.suspend()
-    }
-  }
-
-  const toggleMusic = () => {
-    if (isPlaying) {
-      stopAmbient()
-      setIsPlaying(false)
-    } else {
-      startAmbientLoop()
-      setIsPlaying(true)
-    }
-  }
-
+  // Initialize single persistent audio instance with event listeners
   useEffect(() => {
+    const audio = new Audio('/audio.mp3')
+    audio.loop = true
+    audio.volume = 0.5 // 50% volume (specified: 45-55%)
+    audio.preload = 'auto'
+
+    const handlePlay = () => {
+      setIsPlaying(true)
+      setPlaybackError(false)
+    }
+
+    const handlePause = () => {
+      setIsPlaying(false)
+    }
+
+    const handleEnded = () => {
+      setIsPlaying(false)
+    }
+
+    const handleError = () => {
+      setIsPlaying(false)
+      setPlaybackError(true)
+    }
+
+    audio.addEventListener('play', handlePlay)
+    audio.addEventListener('pause', handlePause)
+    audio.addEventListener('ended', handleEnded)
+    audio.addEventListener('error', handleError)
+
+    audioRef.current = audio
+
     return () => {
-      stopAmbient()
-      if (audioCtxRef.current) {
-        audioCtxRef.current.close().catch(() => {})
-      }
+      audio.removeEventListener('play', handlePlay)
+      audio.removeEventListener('pause', handlePause)
+      audio.removeEventListener('ended', handleEnded)
+      audio.removeEventListener('error', handleError)
+      audio.pause()
+      audio.src = ''
+      audioRef.current = null
     }
   }, [])
 
+  // Start playback when landing CTA is clicked (preserve landing interaction)
+  useEffect(() => {
+    if (shouldPlay && audioRef.current) {
+      const playPromise = audioRef.current.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true)
+            setPlaybackError(false)
+          })
+          .catch((err) => {
+            console.warn('Audio play request blocked or postponed:', err)
+            setIsPlaying(false)
+            setPlaybackError(true)
+          })
+      }
+    }
+  }, [shouldPlay])
+
+  const togglePlayback = () => {
+    if (!audioRef.current) return
+
+    if (audioRef.current.paused || audioRef.current.ended) {
+      // Resume existing instance
+      const playPromise = audioRef.current.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true)
+            setPlaybackError(false)
+          })
+          .catch((err) => {
+            console.warn('Playback toggle error:', err)
+            setIsPlaying(false)
+            setPlaybackError(true)
+          })
+      }
+    } else {
+      // Pause existing instance
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  // Only show after initial reveal has started
+  if (!shouldPlay) return null
+
+  // Sound is actively playing only if isPlaying is true and not in error state
+  const isSoundActive = isPlaying && !playbackError
+  const accessibleLabel = isSoundActive ? 'Pause background music' : 'Play background music'
+
   return (
-    <div className="fixed top-4 right-4 z-40">
+    <div
+      className="fixed z-40 pointer-events-none select-none"
+      style={{
+        right: 'max(1rem, env(safe-area-inset-right, 1rem))',
+        bottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',
+      }}
+    >
       <button
-        onClick={toggleMusic}
-        className={`px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-medium transition-all shadow-lg backdrop-blur-md cursor-pointer border ${
-          isPlaying
-            ? 'bg-rose-950/80 text-rose-200 border-rose-400/50 shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse'
-            : 'bg-black/50 text-rose-300/80 border-rose-500/20 hover:bg-black/70 hover:text-rose-200'
+        type="button"
+        onClick={togglePlayback}
+        aria-label={accessibleLabel}
+        title={accessibleLabel}
+        className={`pointer-events-auto flex items-center justify-center w-12 h-12 rounded-full border transition-all duration-300 cursor-pointer backdrop-blur-md active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#140428] ${
+          isSoundActive
+            ? 'bg-cadbury-900/90 hover:bg-cadbury-800/95 border-gold-400/60 text-gold-300 shadow-[0_4px_16px_rgba(214,173,85,0.25)] hover:border-gold-300 hover:text-gold-200'
+            : 'bg-black/75 hover:bg-black/90 border-gold-500/30 text-gold-400/70 hover:border-gold-400/50 hover:text-gold-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)]'
         }`}
-        title={isPlaying ? "Mute romantic soundtrack" : "Play romantic soundtrack"}
-        aria-label="Toggle romantic ambient soundtrack"
       >
-        {isPlaying ? (
-          <>
-            <Music className="w-3.5 h-3.5 text-rose-400 animate-spin" style={{ animationDuration: '6s' }} />
-            <span className="hidden sm:inline">Ambience On</span>
-            <Sparkles className="w-3 h-3 text-rose-300" />
-          </>
+        {isSoundActive ? (
+          <Volume2 className="w-5 h-5 text-gold-300" />
         ) : (
-          <>
-            <VolumeX className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Soundtrack</span>
-          </>
+          <VolumeX className="w-5 h-5 text-gold-400/70" />
         )}
       </button>
     </div>

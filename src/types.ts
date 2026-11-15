@@ -1,10 +1,18 @@
-export interface PerkItem {
+export interface PerkCardItem {
   id: string
   title: string
+  subtitle: string
   emoji: string
-  tagline: string
-  description: string
-  highlight?: string
+  description?: string
+}
+
+export interface PerkTier {
+  id: string
+  tierBadge: string
+  title: string
+  subtitle: string
+  cardClass: string
+  cards: PerkCardItem[]
 }
 
 export interface PromiseItem {

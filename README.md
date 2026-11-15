@@ -1,124 +1,143 @@
-# Can I Be Your Half-Boyfriend? 💗
-### *An Unconventional Proposal Website for an Unconventional Connection*
+# Can I Be Your Half-Boyfriend? 💜🍫
+### *Cadbury Dairy Milk-Themed Romantic Proposal Website*
 
-A personal, playful, and beautifully designed romantic proposal web application crafted for November 21, 2026. Built with a rich palette of deep plum, burgundy, dusty rose, and blush pink, featuring smooth glassmorphism, floating ambient particles, responsive layout, and an interactive proposal flow.
-
----
-
-## 🌟 Key Features
-
-1. **✦ Official Application Landing Page**:
-   - Official Application badge with date stamp (*21 NOVEMBER 2026*).
-   - "A little question for you..." pre-heading with grand serif typography.
-   - Interactive callback pill linking to the **15-Day Waiting Period & Bixby Reminder lore**.
-   - Cinematic romantic visual showcasing tender intimacy.
-   - Smooth-scrolling CTA button (*"Explore the Proposal ↓"*).
-
-2. **A Little Preview of the Perks 🌝**:
-   - Cinematic 21:9 aspect ratio video player with custom ambient controls.
-   - Play/pause overlay, mute toggle, and fullscreen support.
-   - Designed to never autoplay audio unexpectedly (comfort first).
-   - Playful caption: *"Just a little demonstration of the chemistry we're talking about. 🤌"*
-
-3. **The Perks Package ❤️**:
-   - 8 responsive membership cards with custom icons & playful taglines:
-     - 🤝 **Friendship** (The Unshakeable Core)
-     - ❤️ **Affection** (Genuine & Unfiltered)
-     - 🌝 **Flirting** (Playful Chemistry)
-     - 🫣 **Intimacy** (Safe & Electrifying)
-     - 🫂 **Hugs & Cuddles** (Endless Warmth)
-     - ✨ **Quality Time** (Zero Pretense)
-     - 💬 **Unfiltered Conversations** (100% Raw Honesty)
-     - 🔥 **Mutual Attraction** (Acknowledged Chemistry)
-
-4. **The Best-Kept Secret 🤫**:
-   - Distinctive blush-pink glassmorphic card with the **Four Non-Negotiable Promises**:
-     - ✓ **You set the boundaries. You set the pace.** (*"I respect both. After all, you said to wait 15 days before asking, and look, I actually did. 😂"*)
-     - ✓ **Nothing is obligatory.** (*"You can change your mind at any point. We can always go back to how we are now, without awkwardness or hard feelings."*)
-     - ✓ **No assumptions, no mind-reading.** (*"Just honest communication. Always."*)
-     - ✓ **No conventional relationship subscription required.** (*"No conventional labels, commitments or expectations that neither of us signed up for. 😂"*)
-
-5. **Potential Disadvantages**:
-   - Humorous transparent card with **"None.*"**
-   - Asterisk disclaimer: `*Except the possibility of catching feelings, occasional jealousy, and the occasional argument over who is more adorable. 😭`
-   - Warranty note: `Emotional complications are not covered under warranty.`
-
-6. **The Actual Proposal 🥹**:
-   - Deep burgundy/plum emotional highlight section with glowing pink accents.
-   - Three honest, non-manipulative options:
-     - `I'd love to! ❤️` → Triggers celebratory confetti with floating hearts + warm message + instant WhatsApp reply button.
-     - `Let's discuss this! 💬` → Thoughtful conversation prompt with coffee invite draft.
-     - `I'd rather stay friends. 🤝` → Gracious, guilt-free validation reaffirming the friendship.
-   - Switchable answers anytime with zero database tracking (complete privacy).
-
-7. **Soundtrack & Ambient Extras**:
-   - Generative Web Audio API romantic chord progression (starts muted, tap to toggle dreamy ambient background).
-   - Mobile-first responsive optimization tailored for opening from WhatsApp or mobile browsers.
+A complete redesign of the **"Can I Be Your Half-Boyfriend?"** proposal website, reimagined as a luxurious, playful, and romantic Cadbury Dairy Milk chocolate gift box.
 
 ---
 
-## 🚀 Quick Start
+## 🌟 The Experience Journey
 
-### 1. Install dependencies
+### 1. The Chocolate Box Unwrapping (Click-to-Reveal Landing Page)
+- **Zero distraction**: Initially, the visitor sees **ONLY** the landing screen. No header, no navbar, no section previews, no scrolling.
+- Styled like the front of a luxury Dairy Milk chocolate gift box:
+  - Rich Cadbury purple texture (`#3B146B` / `#240B49`) with golden radial illumination.
+  - Embossed gold foil corners and framing.
+  - Decorative label: `"✦ A LITTLE SOMETHING FOR YOU ✦"`.
+  - Script flourish: *"A treat for someone special"*.
+  - Main heading:
+    ```
+    Can I Be Your
+    Half-Boyfriend?
+    ```
+  - Subtitle: *"An Unconventional Proposal Website for an Unconventional Connection"*.
+  - Medallion: `🍫 Cadbury-Edition • Nov 21`
+  - Primary CTA: **`"TAP TO EXPLORE THE PROPOSAL"`** with gold border and glowing sparkles.
+- **The Click Interaction**:
+  - Tapping the button unwraps the box with an elegant fade & scale transition.
+  - Autoplays the vertical video (`/video.mp4`) muted on loop.
+  - Starts playing Dairy Milk's iconic **"Kiss Me" soundtrack** (`/audio.mp3`) on loop at ~50% volume.
+  - Unlocks smooth scrolling into the main website.
+
+### 2. Hero Experience — The Cinematic Video Section
+- Full-screen vertical video experience (`100svh` on mobile, framed portrait on desktop).
+- Source: `/video.mp4` (local asset).
+- Clean, uninterrupted playback (no play/pause overlays, no video controls).
+- Staggered golden typography annotations:
+  1. `"A LITTLE PREVIEW OF THE PERKS 🌝"`
+  2. `"Could Be Us."`
+  3. `"This over 'Just Friends' >>>>>"`
+- Smooth scroll prompt: *"Unwrap the perks package ↓"*.
+
+### 3. Background Music — Dairy Milk's "Kiss Me"
+- Source: `/audio.mp3` (local asset).
+- Persistent single audio instance that continues smoothly across scroll.
+- Floating purple & gold audio toggle with soundwave animation (`"Kiss Me" ♪`) allowing mute/unmute and pause/resume.
+
+### 4. Section A — The Perks Package ❤️ (3 Cadbury Product Tiers)
+Organized into three clearly labeled product tiers styled like artisanal chocolate selections:
+
+#### **Tier 1: The Foundation: Classic Dairy Milk**
+- Subtitle: *“What Stays”*
+- Texture: Smooth, glossy, classic milk-chocolate surface.
+- Mobile layout: Displayed side-by-side in a single row (`grid-cols-2`), compact typography, no body descriptions.
+  - 🤝 **Friendship** — *The Unshakeable Core*
+  - ❤️ **Affection** — *Genuine & Unfiltered*
+
+#### **Tier 2: The Upgrade: Dairy Milk Crackle**
+- Subtitle: *“What Levels Up”*
+- Texture: Subtle crisp, crunchy, lightly fractured chocolate texture.
+  - 🔥 **Mutual Attraction** — *Acknowledged Chemistry*
+    > *“Celebrate mutual attraction openly and enjoy every second of it.”*
+  - 😏 **Flirting & Conversations** — *Uncensored*
+    > *“Zero masks. Talk about wants, needs, fantasies, and unhinged gossip—without judgment.”*
+
+#### **Tier 3: The Indulgence: Dairy Milk Silk**
+- Subtitle: *“What Adds”*
+- Texture: Soft, velvety, gently bubbly/silky texture.
+  - 🫂 **Hugs & Cuddles** — *No Tag Needed*
+    > *“Come find peace and endless warmth in my arms.”*
+  - 🫣 **Intimacy** — *Safe & Electrifying*
+    > *“Explore the physical spark at your own pace—built on comfort, consent, and mutual enthusiasm.”*
+
+---
+
+### 5. Section B — The Best-Kept Secret 🤫
+- Prominently situated **INSIDE** the Perks Package.
+- Visual distinction: Royal purple card with gold foil border and ornamental corners.
+- Subtitle: *"Some perks come with a few promises."*
+- The Four Non-Negotiable Promises with gold checkmarks:
+  - ✓ **You set the boundaries. You set the pace.** — *"I respect both. After all, you said to wait 15 days before asking, and look, I actually did. 😂"* *(Includes interactive Bixby Reminder 15-day receipt modal)*
+  - ✓ **Nothing is obligatory.** — *"You can change your mind at any point. We can always go back to how we are now, without awkwardness or hard feelings."*
+  - ✓ **No assumptions, no mind-reading.** — *"Just honest communication. Always."*
+  - ✓ **No conventional relationship subscription required.** — *"No conventional labels, commitments or expectations that neither of us signed up for. 😂"*
+
+### 6. Section C — Potential Disadvantages
+- Styled like a Cadbury Nutritional / Quality Guarantee seal.
+- Main text: **"None.*"**
+- Asterisk disclaimer: `*Except the possibility of catching feelings, occasional jealousy, and the occasional argument over who is more adorable. 😭`
+- Warranty line: `"Emotional complications are not covered under warranty."`
+
+### 7. Section D — The Actual Proposal 🥹
+- The emotional climax of the experience.
+- Heading: **"So, what do you say? 🥹"**
+- Supporting text: *"No pressure. I'd rather have an honest answer than an obligatory yes."*
+- Three interactive options:
+  1. **"I'd love to! ❤️"** → Triggers celebration with floating golden sparkles and hearts + heartfelt acceptance text.
+  2. **"Let's discuss this! 💬"** → Warm coffee / chat conversation prompt.
+  3. **"I'd rather stay friends. 🤝"** → Reassuring, zero-guilt response reaffirming the friendship.
+- **Single Primary Action**: **`"Copy & Send Me"`**
+  - Copies the pre-written reply text to clipboard.
+  - Displays instant confirmation: **`"Copied! Send it to me 💜"`**.
+  - No external redirects, share sheets, or WhatsApp deep links.
+  - 100% local privacy: no server logging or tracking.
+
+### 8. Footer
+- Minimal footer with gold decorative separator flourish.
+- Text:
+  `"Made with affection, a questionable amount of tharak, and entirely too much free time. 😂"`
+  `"A proposal by yours truly."`
+- Animated chocolate heart and sparkle.
+
+---
+
+## 🛠️ Technology Stack
+
+- **React 19** + **TypeScript**
+- **Tailwind CSS v4** + `@tailwindcss/vite`
+- **Framer Motion** + **Canvas Confetti**
+- **Lucide Icons**
+- **Vite 6**
+- **Zero external audio/video CDNs**: uses local `/public/video.mp4` and `/public/audio.mp3`.
+
+---
+
+## 🚀 Running Locally
+
 ```bash
+# Install dependencies (if not already installed)
 npm install
-```
 
-### 2. Start development server
-```bash
+# Start local development server
 npm run dev
-```
 
-### 3. Build for production
-```bash
+# Build for production
 npm run build
 ```
-The compiled, optimized production files will be in `dist/`.
 
 ---
 
-## 🎨 How to Customize Media Assets
+## 📦 Deploying Online
 
-All media URLs and captions are cleanly centralized in `src/data/proposalData.ts`:
-
-```typescript
-export const ASSETS_CONFIG = {
-  // Hero section image (URL or local path in public/)
-  heroImage: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop",
-  heroImageAlt: "Two people sharing a tender cinematic moment",
-  
-  // Video preview (URL or local path in public/)
-  previewVideo: "https://assets.mixkit.co/videos/4887/4887-720.mp4",
-  
-  // Video thumbnail poster
-  videoPoster: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop",
-}
-```
-
-To use your own local video or images:
-1. Copy your file to the `public/` directory (e.g. `public/my-clip.mp4`).
-2. Update the path in `src/data/proposalData.ts` to `previewVideo: "/my-clip.mp4"`.
-
----
-
-## 📦 Deploying Online (Free & Instant)
-
-You can deploy this site in under 1 minute using any of the following:
-
-### Option A: Vercel
-```bash
-npx vercel
-```
-Or import this repository directly into [vercel.com](https://vercel.com).
-
-### Option B: Netlify
-Drag and drop the `dist/` folder into [app.netlify.com/drop](https://app.netlify.com/drop).
-
-### Option C: GitHub Pages
-Push to a repository and enable GitHub Actions with standard Vite deployment.
-
----
-
-## 📜 Footer Notice
-*"Made with affection, a questionable amount of tharak, and entirely too much free time. 😂"*
-— A proposal by yours truly.
+- **Vercel**: Run `npx vercel` or connect repository to [vercel.com](https://vercel.com).
+- **Netlify**: Drag and drop the `dist/` directory onto [app.netlify.com/drop](https://app.netlify.com/drop).
+- **GitHub Pages**: Deploy the `dist/` output with standard static hosting.

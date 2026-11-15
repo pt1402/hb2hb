@@ -1,92 +1,92 @@
-import { PerkItem, PromiseItem } from '../types'
+import { PerkTier, PromiseItem } from '../types'
 
 export const PROPOSAL_METADATA = {
-  badge: "✦ OFFICIAL APPLICATION ✦",
+  landingBadge: "✦ A LITTLE SOMETHING FOR YOU ✦",
+  landingSubtitleTag: "Special Selection • 100% Personal",
+  titleMain: "Can I Be Your",
+  titleHighlight: "Half-Boyfriend?",
+  subtitle: "An Unconventional Proposal Website for an Unconventional Connection",
+  landingCta: "TAP TO EXPLORE THE PROPOSAL",
   dateFormatted: "21 NOVEMBER 2026",
   subDateNotice: "As promised, exactly on schedule. 🗓️",
   bixbyReference: "Triggered from the legendary Bixby reminder set 15 days ago",
-  mainPreHeading: "A little question for you...",
-  titleMain: "Can I Be Your",
-  titleHighlight: "Half-Boyfriend?",
-  subtitle: "An unconventional proposal for an unconventional connection. ❤️",
-  promptInstruction: "Please review the perks package before making your decision.",
-  scrollCta: "Explore the Proposal ↓",
+  scrollPrompt: "Unwrap the full proposal ↓",
 }
 
-export const ASSETS_CONFIG = {
-  // Hero section image: can be a web URL or local path in public/ e.g. "/hero-photo.jpg"
-  heroImage: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop",
-  heroImageAlt: "Two people sharing a tender cinematic moment",
-  // Video preview: can be a web URL or local video in public/ e.g. "/preview-video.mp4"
-  previewVideo: "https://assets.mixkit.co/videos/4887/4887-720.mp4",
-  // Video poster thumbnail
-  videoPoster: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop",
+export const HERO_VIDEO_DATA = {
+  videoSrc: "/video.mp4",
+  tagline: "A LITTLE PREVIEW OF THE PERKS 🌝",
+  mainAnnotation: "Could Be Us.",
+  secondaryCaption: "This over 'Just Friends' >>>>>",
 }
 
-export const PERKS_DATA: PerkItem[] = [
+export const PERK_TIERS_DATA: PerkTier[] = [
   {
-    id: "friendship",
-    title: "Friendship",
-    emoji: "🤝",
-    tagline: "The Unshakeable Core",
-    description: "The rock-solid foundation that started it all. Every laugh, inside joke, and reliable presence stays 100% intact.",
-    highlight: "Non-negotiable basis"
+    id: "foundation",
+    tierBadge: "TIER 01 • ESSENTIALS",
+    title: "The Foundation: Classic Dairy Milk",
+    subtitle: "What Stays",
+    cardClass: "tier-classic-card",
+    cards: [
+      {
+        id: "friendship",
+        emoji: "🤝",
+        title: "Friendship",
+        subtitle: "The Unshakeable Core"
+      },
+      {
+        id: "affection",
+        emoji: "❤️",
+        title: "Affection",
+        subtitle: "Genuine & Unfiltered"
+      }
+    ]
   },
   {
-    id: "affection",
-    title: "Affection",
-    emoji: "❤️",
-    tagline: "Genuine & Unfiltered",
-    description: "Warmth without the hidden agenda. Random wholesome check-ins, genuine compliments, and being prioritized.",
-    highlight: "Guaranteed hype person"
+    id: "upgrade",
+    tierBadge: "TIER 02 • THE SPARK",
+    title: "The Upgrade: Dairy Milk Crackle",
+    subtitle: "What Levels Up",
+    cardClass: "tier-crackle-card",
+    cards: [
+      {
+        id: "mutual-attraction",
+        emoji: "🔥",
+        title: "Mutual Attraction",
+        subtitle: "Acknowledged Chemistry",
+        description: "Celebrate mutual attraction openly and enjoy every second of it."
+      },
+      {
+        id: "flirting-conversations",
+        emoji: "😏",
+        title: "Flirting & Conversations",
+        subtitle: "Uncensored",
+        description: "Zero masks. Talk about wants, needs, fantasies, and unhinged gossip—without judgment."
+      }
+    ]
   },
   {
-    id: "flirting",
-    title: "Flirting",
-    emoji: "🌝",
-    tagline: "Playful Chemistry",
-    description: "Uncensored teasing, bantering, eyebrow-raises, and that delicious tension we both know is already there.",
-    highlight: "10/10 banter rating"
-  },
-  {
-    id: "intimacy",
-    title: "Intimacy",
-    emoji: "🫣",
-    tagline: "Safe & Electrifying",
-    description: "Exploring that physical spark at our own pace, built on absolute comfort, consent, and mutual enthusiasm.",
-    highlight: "Mutual excitement"
-  },
-  {
-    id: "cuddles",
-    title: "Hugs & Cuddles",
-    emoji: "🫂",
-    tagline: "Endless Warmth",
-    description: "Unlimited lingering embraces, shoulder leans, and soul-recharging cuddles whenever either of us needs one.",
-    highlight: "Anti-stress therapy"
-  },
-  {
-    id: "quality-time",
-    title: "Quality Time",
-    emoji: "✨",
-    tagline: "Zero Pretense",
-    description: "Late night drives, coffee runs, parallel lounging, or just quiet moments together without feeling forced to perform.",
-    highlight: "Effortless vibe"
-  },
-  {
-    id: "conversations",
-    title: "Unfiltered Conversations",
-    emoji: "💬",
-    tagline: "100% Raw Honesty",
-    description: "Zero masks. Talk about everything from existential midnight musings to unhinged gossip without judgment.",
-    highlight: "No filter zone"
-  },
-  {
-    id: "mutual-attraction",
-    title: "Mutual Attraction",
-    emoji: "🔥",
-    tagline: "Acknowledged Chemistry",
-    description: "Not pretending we don't notice each other. Celebrating mutual attraction openly and enjoying every second of it.",
-    highlight: "Undeniable spark"
+    id: "indulgence",
+    tierBadge: "TIER 03 • PURE LUXURY",
+    title: "The Indulgence: Dairy Milk Silk",
+    subtitle: "What Adds",
+    cardClass: "tier-silk-card",
+    cards: [
+      {
+        id: "hugs-cuddles",
+        emoji: "🫂",
+        title: "Hugs & Cuddles",
+        subtitle: "No Tag Needed",
+        description: "Come find peace and endless warmth in my arms."
+      },
+      {
+        id: "intimacy",
+        emoji: "🫣",
+        title: "Intimacy",
+        subtitle: "Safe & Electrifying",
+        description: "Explore the physical spark at your own pace—built on comfort, consent, and mutual enthusiasm."
+      }
+    ]
   }
 ]
 
@@ -128,49 +128,49 @@ export const PROPOSAL_OPTIONS = [
   {
     id: 'yes' as const,
     label: "I'd love to! ❤️",
-    subLabel: "Let's explore this chapter",
-    accent: "rose"
+    subLabel: "Unwrap the sweet chapter",
+    accent: "gold"
   },
   {
     id: 'discuss' as const,
     label: "Let's discuss this! 💬",
-    subLabel: "Let's talk in person / call",
-    accent: "amber"
+    subLabel: "Let's talk over coffee/call",
+    accent: "purple"
   },
   {
     id: 'friends' as const,
     label: "I'd rather stay friends. 🤝",
     subLabel: "Keep our awesome friendship",
-    accent: "purple"
+    accent: "lavender"
   }
 ]
 
 export const PROPOSAL_RESPONSES = {
   yes: {
-    badge: "Best Decision Ever 🎉",
+    badge: "The Golden Selection 🍫✨",
     title: "Well, this just made my day. ❤️",
     message: "Now let's figure out what this means for both of us, together.",
-    followUp: "No expectations, just mutual excitement. Drop me a text whenever you're ready to celebrate or chat about boundaries over dessert/coffee! ☕✨",
-    whatsappDraft: "Hey! I reviewed your official Half-Boyfriend proposal... and I said YES! ❤️ Let's discuss our perks package over coffee ☕"
+    followUp: "No expectations, just mutual excitement. Drop me a text whenever you're ready to celebrate or chat about boundaries over dessert/coffee! ☕🍫",
+    replyDraft: "Hey! I opened your Dairy Milk proposal... and I said YES! ❤️ Let's figure out what this means for both of us over coffee ☕🍫"
   },
   discuss: {
-    badge: "Thoughtful & Fair 💭",
+    badge: "Thoughtful & Sweet 💭",
     title: "Of course! ❤️",
     message: "Some things deserve a proper conversation rather than a quick yes or no.",
     followUp: "I appreciate you taking this seriously. Let's grab coffee or hop on a call whenever you're free—no rush, no awkwardness, just us.",
-    whatsappDraft: "Hey! I read through the Half-Boyfriend application. Let's have a proper chat about it! 💬☕"
+    replyDraft: "Hey! I read through your Half-Boyfriend chocolate proposal. Let's have a proper chat about it! 💬☕"
   },
   friends: {
     badge: "Friendship Above All 🫂",
     title: "That's absolutely okay. ❤️",
     message: "Nothing changes. I still value what we have, and I'm glad you were honest with me.",
     followUp: "Your comfort and our friendship mean more to me than any proposal. Thank you for your honesty, and looking forward to our next inside joke and hangout! 🌟",
-    whatsappDraft: "Hey! I saw your cute proposal. I think we're best as friends, and I love our bond just the way it is! 🤝❤️"
+    replyDraft: "Hey! I saw your cute chocolate proposal. I think we're best as friends, and I love our bond just the way it is! 🤝💜"
   }
 }
 
 export const FOOTER_DATA = {
   line1: "Made with affection, a questionable amount of tharak, and entirely too much free time. 😂",
   line2: "A proposal by yours truly.",
-  applicationId: "HB-2026-1121-APPROVED-IN-SPIRIT"
+  edition: "Limited Romantic Edition • 21 November 2026"
 }
