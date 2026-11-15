@@ -111,8 +111,8 @@ export const PROMISES_DATA: PromiseItem[] = [
   },
   {
     id: 4,
-    title: "No conventional relationship subscription required.",
-    description: "No conventional labels, commitments or expectations. Just two people enjoying each other's company to the fullest while they can be together.",
+    title: "No conventional labels, commitments or expectations.",
+    description: "Just two people enjoying each other's company to the fullest while they can. 💞",
     isJoke: false
   }
 ]

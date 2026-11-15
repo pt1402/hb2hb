@@ -48,7 +48,7 @@ export const BixbyModal: React.FC<BixbyModalProps> = ({ isOpen, onClose }) => {
             <div className="min-w-0">
               <span className="text-[11px] text-gold-400 font-mono">Reminder Title</span>
               <p className="text-sm sm:text-base font-semibold text-ivory-100">
-                "Ask her to be your Half-Girlfriend 🍫💜"
+                "Ovulation Time 🔔💜"
               </p>
             </div>
             <span className="text-[10px] bg-green-500/20 text-green-300 border border-green-500/30 px-2 py-0.5 rounded-full flex items-center gap-1 font-mono shrink-0">
@@ -73,13 +73,13 @@ export const BixbyModal: React.FC<BixbyModalProps> = ({ isOpen, onClose }) => {
           </div>
 
           <div className="p-2.5 rounded-xl bg-cadbury-900/60 border border-gold-400/25 text-xs text-ivory-100/90 leading-relaxed font-serif italic">
-            "Proof of patience: You said wait 15 days before asking, and I didn't rush a single day. Receipt preserved as promised! 😂"
+            Proof of patience: Remember, you said my chances depended on your Ovulation. And I didn't rush a single day. Receipt preserved as promised! 😂
           </div>
         </div>
 
         {/* Explanation text */}
         <p className="text-xs text-ivory-100/80 leading-relaxed mb-5 font-light">
-          This entire Cadbury-inspired proposal was crafted during the 15-day waiting period. No artificial pressure, just honest affection and good timing.
+           It gave me enough time to craft this Cadbury-inspired proposal though 🍫😋
         </p>
 
         {/* Dismiss Button */}
