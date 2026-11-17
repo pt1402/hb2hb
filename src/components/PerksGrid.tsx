@@ -35,6 +35,13 @@ export const PerksGrid: React.FC<PerksGridProps> = ({ onOpenBixbyLore }) => {
         <p className="text-sm sm:text-base text-ivory-100/80 font-light leading-relaxed max-w-lg mx-auto">
           A three-tier assortment of what stays, what levels up, and what is waiting to be explored.
         </p>
+
+        <img
+          src="/assortment.png"
+          alt="Cadbury Curated Assortment"
+          className="w-full h-auto object-contain block"
+          loading="lazy"
+        />
       </div>
 
       {/* ======================================================== */}
