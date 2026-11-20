@@ -60,7 +60,7 @@ export const LandingWrapper: React.FC<LandingWrapperProps> = ({ onReveal }) => {
 
         {/* Script flourish */}
         <p className="font-script text-2xl sm:text-3xl text-gold-300/80 mb-2 font-normal">
-          A treat for someone special
+          To   my   dearest   babygirl,
         </p>
 
         {/* Central Title */}

@@ -150,8 +150,8 @@ export const PROPOSAL_RESPONSES = {
     badge: "The Golden Selection 🍫✨",
     title: "Well, this just made my day. ❤️",
     message: "Now let's figure out what this means for both of us, together.",
-    followUp: "I said YES! ❤️",
-    replyDraft: "I said YES! ❤️"
+    followUp: "It's a YES from me, daddy! 💋",
+    replyDraft: "It's a YES from me, daddy! 💋"
   },
   discuss: {
     badge: "Thoughtful & Sweet 💭",
